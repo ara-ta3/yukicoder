@@ -1,20 +1,22 @@
-from memory_profiler import profile
-
-@profile
 def main():
-    line = input()
-    ret = calculate(line)
+    L = input()
+    N = input()
+    Ws = input()
+    int_ws = [int(x) for x in Ws.split(" ")]
+    ret = calculate(int(L), int(N), int_ws)
     print(ret)
 
 
-def calculate(line):
-    ns = [int(x) for x in line.split(" ")]
-    return sum(ns)
+def calculate(L, N, Ws):
+    sorted_ws = sorted(Ws)
+    n = 0
+    for w in sorted_ws:
+        L -= int(w)
+        n += 1
+        if L < 0:
+            return n - 1
+    return n
 
 
 if __name__ == '__main__':
-    import time
-    start = time.time()
     main()
-    end = time.time()
-    print("Program end in {} ms".format(end - start))

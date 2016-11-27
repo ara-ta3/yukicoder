@@ -2,6 +2,12 @@ virtualenv=$(shell which virtualenv)
 main=main.py
 in=in.txt
 
+yukicoder1: 
+	$(MAKE) run in=sample1.txt
+
+yukicoder2: 
+	$(MAKE) run in=sample2.txt
+
 run: bin/python
 	$< $(main) < $(in)
 
